@@ -10,4 +10,5 @@
     <string name="about_author_name">Raphael N. Pawlik</string>
     <string name="about_app_version">Version 1.0</string>
     <string name="menu_about">About</string>
+    <string name="menu_add_beer">Add Beer</string>
 </resources>
