@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,8 +18,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import brejas.com.br.brejas.adapter.BeersListAdapter;
+import brejas.com.br.brejas.model.Beer;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    private RecyclerView recyclerView;
+    private BeersListAdapter adapter;
+    // temp mock data
+    List<Beer> beerArrayList = new ArrayList<Beer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +57,29 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        initMock();
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+        Log.i("BR", String.valueOf(beerArrayList.size()));
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+
+        adapter = new BeersListAdapter(this, beerArrayList);
+        recyclerView.setAdapter(adapter);
+
+    }
+
+    void initMock() {
+
+        beerArrayList.add(new Beer("Heineken", "Heineken", "Bottle", 600, 2));
+        beerArrayList.add(new Beer("Sol", "Heineken", "Bottle", 600, 10));
+        beerArrayList.add(new Beer("Bavária", "Heineken", "Bottle", 1000, 2));
+        beerArrayList.add(new Beer("Kaiser", "Heineken", "Pack", 320, 16));
+
     }
 
     @Override
