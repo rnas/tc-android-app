@@ -11,7 +11,7 @@
     tools:context="brejas.com.br.brejas.NewItem">
 
     <TextView
-        android:text="Beer Name"
+        android:text="@string/add_beer_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/et_name"
         android:inputType="text"
         tools:hint="Beer Name"
         android:layout_below="@+id/textView6"
@@ -43,22 +43,22 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/et_content"
         tools:hint="in mililiters"
         android:layout_below="@+id/textView8"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:inputType="numberDecimal" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/editText3"
+        android:id="@+id/et_units"
         tools:hint="Number of Units"
         android:layout_below="@+id/textView9"
         android:layout_alignParentLeft="true"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/et_brand"
         tools:hint="Brand Name"
         android:layout_below="@+id/textView10"
         android:layout_alignParentLeft="true"
@@ -80,37 +80,38 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:text="Add"
+        android:text="@string/add_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
-        android:layout_below="@+id/editText3"
+        android:onClick="submit"
+        android:layout_below="@+id/et_units"
         android:layout_toRightOf="@+id/textView10"
         android:layout_toEndOf="@+id/textView10"
         android:layout_marginTop="47dp" />
 
     <TextView
-        android:text="Brand"
+        android:text="@string/add_brand"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView10"
         android:layout_marginTop="14dp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/et_name"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Package Type"
+        android:text="@string/add_package_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:id="@+id/textView7"
-        android:layout_below="@+id/editText5"
+        android:layout_below="@+id/et_brand"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Package Unit Content"
+        android:text="@string/add_package_unit_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView8"
@@ -120,12 +121,12 @@
         android:layout_marginTop="21dp" />
 
     <TextView
-        android:text="Units in Stock"
+        android:text="@string/add_units_in_stock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:id="@+id/textView9"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/et_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 </RelativeLayout>

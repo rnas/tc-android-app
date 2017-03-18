@@ -1,20 +1,21 @@
 package brejas.com.br.brejas.model;
 
+import android.text.Editable;
+
 /**
  * Created by rnas on 15/03/17.
  */
 
 public class Beer {
 
-    private int id;
+    private int id; // ?
     private String name;
     private String brand;
     private String type;
     private int content;
     private int units;
 
-    public Beer(int id, String name, String brand, String type, int content, int units) {
-        this.id = id;
+    public Beer(String name, String brand, String type, int content, int units) {
         this.name = name;
         this.brand = brand;
         this.type = type;

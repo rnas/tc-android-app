@@ -11,4 +11,15 @@
     <string name="about_app_version">Version 1.0</string>
     <string name="menu_about">About</string>
     <string name="menu_add_beer">Add Beer</string>
+    <string name="add_beer_name">Beer Name</string>
+    <string name="add_submit">Add</string>
+    <string name="add_brand">Brand</string>
+    <string name="add_package_type">Package Type</string>
+    <string name="add_package_unit_content">Package Unit Content</string>
+    <string name="add_units_in_stock">Units in Stock</string>
+    <string name="add_err_name">Fill the Name Field</string>
+    <string name="add_err_brand">Fill the field Brand Name</string>
+    <string name="add_err_content">Fill the field Content</string>
+    <string name="add_err_units">Fill the field Units</string>
+    <string name="add_err_pack">Select the package type</string>
 </resources>
