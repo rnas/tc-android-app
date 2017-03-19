@@ -1,7 +1,9 @@
 package brejas.com.br.brejas;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -22,14 +24,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import brejas.com.br.brejas.adapter.BeersListAdapter;
+import brejas.com.br.brejas.helper.Constants;
 import brejas.com.br.brejas.model.Beer;
+import brejas.com.br.brejas.model.User;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
     private RecyclerView recyclerView;
     private BeersListAdapter adapter;
+
     // temp mock data
     List<Beer> beerArrayList = new ArrayList<Beer>();
 
@@ -40,15 +44,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -57,6 +52,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        loadList();
+    }
+
+    void loadList() {
 
         initMock();
 
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setAdapter(adapter);
 
     }
+
 
     void initMock() {
 
@@ -123,14 +124,20 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_add) {
             Intent intent = new Intent(this, NewItem.class);
             startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.list_beers) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_about) {
             Intent intent = new Intent(this, Credits.class);
+            startActivity(intent);
+        } else if (id == R.id.logout) {
+
+            // Kills the logged user flag
+            SharedPreferences sf = PreferenceManager.getDefaultSharedPreferences(this);
+            sf.edit().putBoolean(Constants.KEEP_LOGGED, false).commit();
+
+            Intent intent = new Intent(this, SplashScreen.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
 
