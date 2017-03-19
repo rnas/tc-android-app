@@ -7,8 +7,13 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import brejas.com.br.brejas.api.UserAPI;
@@ -22,12 +27,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import static brejas.com.br.brejas.helper.Constants.*;
 
-public class SplashScreen extends AppCompatActivity implements Callback<User> {
+public class SplashScreen extends AppCompatActivity implements Callback<User>, Animation.AnimationListener {
+
+    Animation animacao;
+    ImageView icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+
+        icon = (ImageView) findViewById(R.id.icon);
+
+        animacao = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.splash);
+
+        icon.startAnimation(animacao);
+        animacao.setAnimationListener(this);
 
         loadAPIUsers();
     }
@@ -50,8 +66,6 @@ public class SplashScreen extends AppCompatActivity implements Callback<User> {
         Log.i("BR", "server response");
         Log.i("BR", response.body().getUser());
 
-        // TODO: stop the animation
-
         if (isLogged()) {
             Intent intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -62,6 +76,21 @@ public class SplashScreen extends AppCompatActivity implements Callback<User> {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
+
+    }
+
+    @Override
+    public void onAnimationStart(Animation animation) {
+
+    }
+
+    @Override
+    public void onAnimationEnd(Animation animation) {
+
+    }
+
+    @Override
+    public void onAnimationRepeat(Animation animation) {
 
     }
 
