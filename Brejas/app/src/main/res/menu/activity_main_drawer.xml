@@ -11,9 +11,7 @@
             android:id="@+id/list_beers"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/list_beers" />
-    </group>
 
-    <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_about"
@@ -25,6 +23,6 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/menu_logout" />
         </menu>
-    </item>
 
+    </group>
 </menu>

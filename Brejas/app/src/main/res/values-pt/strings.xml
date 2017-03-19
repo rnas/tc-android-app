@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Brejas</string>
+    <string name="about_app_version">Versão 1.0</string>
+    <string name="about_title_about">Sobre</string>
+    <string name="about_title_version">Versão</string>
+    <string name="action_settings">Configurações</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="add_beer_name">Nome da Cerveja</string>
+    <string name="add_brand">Marca</string>
+    <string name="add_err_brand">Preencha o campo Marca</string>
+    <string name="add_err_content">Preencha o campo Conteúdo</string>
+    <string name="add_err_name">Preencha o campo Nome</string>
+    <string name="add_err_pack">Selecione o tipo de embalagem</string>
+    <string name="add_err_units">Selecione a quantidade</string>
+    <string name="add_package_type">Selecione o tipo de embalagem</string>
+    <string name="add_package_unit_content">Conteúdo da Embalagem</string>
+    <string name="add_submit">Adicionar</string>
+    <string name="add_units_in_stock">Unidades em Estoque</string>
+    <string name="err_server_connection">Não foi possível conectar ao servidor</string>
+    <string name="error_field_required">Este campo é obrigatório</string>
+    <string name="error_incorrect_password">Senha incorreta</string>
+    <string name="error_invalid_email">Usuário não valido</string>
+    <string name="error_invalid_password">A senha digitada é muito curta</string>
+    <string name="list_beers">Listar Cervejas</string>
+    <string name="login_keep_logged">Mantenha-me logado</string>
+    <string name="login_username">Usuário</string>
+    <string name="menu_about">Sobre</string>
+    <string name="menu_logout">Sair</string>
+    <string name="menu_add_beer">Adicionar Nova</string>
+    <string name="navigation_drawer_close">Fechar Menu</string>
+    <string name="navigation_drawer_open">Abrir Menu</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="title_activity_login">Entrar</string>
+</resources>
