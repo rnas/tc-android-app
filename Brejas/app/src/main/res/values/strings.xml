@@ -41,4 +41,5 @@
     <string name="list_beers">List Beers</string>
     <string name="new_edit">Edit</string>
     <string name="new_add">Add</string>
+    <string name="add_bottles">" Bottles"</string>
 </resources>

@@ -14,23 +14,23 @@ public class Beer implements Parcelable {
     public final static String ID       = "_id";
     public final static String NAME     = "name";
     public final static String BRAND    = "brand";
-    public final static String TYPE     = "type";
+//    public final static String TYPE     = "type";
     public final static String CONTENT  = "content";
     public final static String UNITS    = "units";
 
     private int id; // ?
     private String name;
     private String brand;
-    private String type;
+//    private String type;
     private int content;
     private int units;
 
     public Beer() {};
 
-    public Beer(String name, String brand, String type, int content, int units) {
+    public Beer(String name, String brand, int content, int units) {
         this.name = name;
         this.brand = brand;
-        this.type = type;
+//        this.type = type;
         this.content = content;
         this.units = units;
     }
@@ -39,7 +39,7 @@ public class Beer implements Parcelable {
         id = in.readInt();
         name = in.readString();
         brand = in.readString();
-        type = in.readString();
+//        type = in.readString();
         content = in.readInt();
         units = in.readInt();
     }
@@ -49,7 +49,7 @@ public class Beer implements Parcelable {
         dest.writeInt(id);
         dest.writeString(name);
         dest.writeString(brand);
-        dest.writeString(type);
+//        dest.writeString(type);
         dest.writeInt(content);
         dest.writeInt(units);
     }
@@ -95,13 +95,13 @@ public class Beer implements Parcelable {
         this.brand = brand;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
+//    public String getType() {
+//        return type;
+//    }
+//
+//    public void setType(String type) {
+//        this.type = type;
+//    }
 
     public int getContent() {
         return content;

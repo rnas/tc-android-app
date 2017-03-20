@@ -32,7 +32,7 @@ public class BeersDatabase extends SQLiteOpenHelper {
                 + Beer.ID       + " integer primary key autoincrement, "
                 + Beer.NAME     + " text, "
                 + Beer.BRAND    + " text, "
-                + Beer.TYPE     + " text, "
+//                + Beer.TYPE     + " text, "
                 + Beer.CONTENT  + " integer, "
                 + Beer.UNITS    + " integer "
                 + " )";
@@ -68,7 +68,7 @@ public class BeersDatabase extends SQLiteOpenHelper {
                     beer.setId(cursor.getInt(cursor.getColumnIndex(Beer.ID)));
                     beer.setName( cursor.getString( cursor.getColumnIndex(Beer.NAME) ) );
                     beer.setBrand( cursor.getString( cursor.getColumnIndex(Beer.BRAND) ) );
-                    beer.setType( cursor.getString( cursor.getColumnIndex(Beer.TYPE) ) );
+//                    beer.setType( cursor.getString( cursor.getColumnIndex(Beer.TYPE) ) );
 
                     beer.setContent(cursor.getInt(cursor.getColumnIndex(Beer.CONTENT)));
                     beer.setUnits(cursor.getInt(cursor.getColumnIndex(Beer.UNITS)));
@@ -88,7 +88,7 @@ public class BeersDatabase extends SQLiteOpenHelper {
 
         fields.put(Beer.NAME, beer.getName());
         fields.put(Beer.BRAND, beer.getBrand());
-        fields.put(Beer.TYPE, beer.getType());
+//        fields.put(Beer.TYPE, beer.getType());
         fields.put(Beer.CONTENT, beer.getContent());
         fields.put(Beer.UNITS, beer.getUnits());
 
@@ -103,7 +103,7 @@ public class BeersDatabase extends SQLiteOpenHelper {
 
         fields.put(Beer.NAME, beer.getName());
         fields.put(Beer.BRAND, beer.getBrand());
-        fields.put(Beer.TYPE, beer.getType());
+//        fields.put(Beer.TYPE, beer.getType());
         fields.put(Beer.CONTENT, beer.getContent());
         fields.put(Beer.UNITS, beer.getUnits());
 

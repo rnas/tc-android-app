@@ -39,7 +39,7 @@ public class NewItem extends AppCompatActivity {
         setContentView(R.layout.activity_new_item);
 
         // initalizes the elements
-        spType      = (Spinner)  findViewById(R.id.sp_package_type);
+//        spType      = (Spinner)  findViewById(R.id.sp_package_type);
         txName      = (EditText) findViewById(R.id.et_name);
         txBrand     = (EditText) findViewById(R.id.et_brand);
         txUnits     = (EditText) findViewById(R.id.et_units);
@@ -62,22 +62,22 @@ public class NewItem extends AppCompatActivity {
             btSubmit.setText(R.string.new_add);
         }
 
-        initItemsSpinner();
-    }
-
-    void initItemsSpinner() {
-
-        package_types .add("Bottle");
-        package_types .add("Can");
-        package_types .add("Other");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, package_types);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spType.setAdapter(adapter);
 
     }
+
+//    void initItemsSpinner() {
+//
+//        package_types .add("Bottle");
+//        package_types .add("Can");
+//        package_types .add("Other");
+//
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+//                this, android.R.layout.simple_spinner_item, package_types);
+//
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+////        spType.setAdapter(adapter);
+//
+//    }
 
     void submit(View view) {
 
@@ -87,8 +87,8 @@ public class NewItem extends AppCompatActivity {
 
             if (editing == null) {
 
-                // TODO : type
-                Beer newItem = new Beer(txName.getText().toString(), txBrand.getText().toString(), "Bottle", Integer.parseInt(txContent.getText().toString()), Integer.parseInt(txUnits.getText().toString()));
+
+                Beer newItem = new Beer(txName.getText().toString(), txBrand.getText().toString(), Integer.parseInt(txContent.getText().toString()), Integer.parseInt(txUnits.getText().toString()));
 
                 db.addItem(newItem);
                 db.close();
@@ -136,11 +136,6 @@ public class NewItem extends AppCompatActivity {
 
         if (txContent.getText().length() == 0) {
             formError = getString(R.string.add_err_content);
-            return false;
-        }
-
-        if (spType.getSelectedItemPosition() == -1) {
-            formError = getString(R.string.add_err_pack);
             return false;
         }
 

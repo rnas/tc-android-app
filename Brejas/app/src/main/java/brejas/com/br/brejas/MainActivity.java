@@ -109,10 +109,10 @@ public class MainActivity extends AppCompatActivity
     }
 
     void initMock() {
-        beerArrayList.add(new Beer("Heineken", "Heineken", "Bottle", 600, 2));
-        beerArrayList.add(new Beer("Sol", "Heineken", "Bottle", 600, 10));
-        beerArrayList.add(new Beer("Bavária", "Heineken", "Bottle", 1000, 2));
-        beerArrayList.add(new Beer("Kaiser", "Heineken", "Pack", 320, 16));
+        beerArrayList.add(new Beer("Heineken", "Heineken", 600, 2));
+        beerArrayList.add(new Beer("Sol", "Heineken", 600, 10));
+        beerArrayList.add(new Beer("Bavária", "Heineken", 1000, 2));
+        beerArrayList.add(new Beer("Kaiser", "Heineken", 320, 16));
     }
 
     @Override

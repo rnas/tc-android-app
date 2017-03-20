@@ -46,7 +46,7 @@ public class BeersListAdapter extends RecyclerView.Adapter<BeersListAdapter.Beer
 
         holder.tvName.setText( beers.get(position).getName() + " - " + beers.get(position).getContent() + "ml" );
         holder.tvBrand.setText( beers.get(position).getBrand() );
-        holder.tvInStock.setText( beers.get(position).getUnits() + " X " + beers.get(position).getType());
+        holder.tvInStock.setText( beers.get(position).getUnits() + " un. ");
 
         holder.btDelete.setOnClickListener(new View.OnClickListener() {
             @Override
