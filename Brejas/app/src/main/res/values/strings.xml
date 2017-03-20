@@ -39,4 +39,6 @@
     <string name="login_keep_logged">Keep me logged</string>
     <string name="menu_logout">Logout</string>
     <string name="list_beers">List Beers</string>
+    <string name="new_edit">Edit</string>
+    <string name="new_add">Add</string>
 </resources>

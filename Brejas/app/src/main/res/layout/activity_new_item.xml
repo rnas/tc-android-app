@@ -83,7 +83,7 @@
         android:text="@string/add_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button2"
+        android:id="@+id/submit"
         android:onClick="submit"
         android:layout_below="@+id/et_units"
         android:layout_toRightOf="@+id/textView10"

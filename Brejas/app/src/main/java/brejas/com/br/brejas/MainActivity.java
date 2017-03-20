@@ -80,16 +80,17 @@ public class MainActivity extends AppCompatActivity
         return new OnClickListener() {
             @Override
             public void onClick(View v, int position) {
-
-                Log.i("BR", "clicked");
-                Log.i("BR", String.valueOf(position));
-
-//                Intent i = new Intent(getContext(), DetalheActivity.class);
-//                i.putExtra("carro",  adapter.getItem(position));
-//                startActivity(i);
-
+                editItemAt(position);
             }
         };
+    }
+
+    void editItemAt(int position) {
+
+        Intent intent = new Intent(this, NewItem.class);
+        intent.putExtra( Constants.EDITABLE_ITEM , beerArrayList.get(position));
+        startActivity(intent);
+
     }
 
     void initMock() {

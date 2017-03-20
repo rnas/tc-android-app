@@ -34,4 +34,6 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Senha</string>
     <string name="title_activity_login">Entrar</string>
+    <string name="new_add">Adicionar</string>
+    <string name="new_edit">Editar</string>
 </resources>

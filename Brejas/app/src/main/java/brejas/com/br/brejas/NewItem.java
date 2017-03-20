@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import brejas.com.br.brejas.database.BeersDatabase;
+import brejas.com.br.brejas.helper.Constants;
 import brejas.com.br.brejas.model.Beer;
 
 public class NewItem extends AppCompatActivity {
@@ -27,6 +29,7 @@ public class NewItem extends AppCompatActivity {
     EditText txBrand;
     EditText txUnits;
     EditText txContent;
+    Button btSubmit;
 
     String formError;
 
@@ -41,6 +44,28 @@ public class NewItem extends AppCompatActivity {
         txBrand     = (EditText) findViewById(R.id.et_brand);
         txUnits     = (EditText) findViewById(R.id.et_units);
         txContent   = (EditText) findViewById(R.id.et_content);
+        btSubmit    = (Button)   findViewById(R.id.submit);
+
+        if ( getIntent().hasExtra(Constants.EDITABLE_ITEM) ) {
+
+            Log.i("BR", "ipa");
+
+            Beer item = getIntent().getParcelableExtra(Constants.EDITABLE_ITEM);
+
+            Log.i("BR", item.getName());
+
+            txName.setText(item.getName());
+            txBrand.setText(item.getBrand());
+            txUnits.setText(String.valueOf(item.getUnits()));
+            txContent.setText(String.valueOf(item.getContent()));
+
+            editing = item;
+
+            btSubmit.setText(R.string.new_edit);
+        } else {
+            btSubmit.setText(R.string.new_add);
+        }
+
 
         initItemsSpinner();
     }
@@ -63,14 +88,15 @@ public class NewItem extends AppCompatActivity {
 
         if ( validateDataEntry() ) {
 
+            BeersDatabase db = new BeersDatabase(getBaseContext());
+
             if (editing == null) {
 
                 // TODO : type
                 Beer newItem = new Beer(txName.getText().toString(), txBrand.getText().toString(), "Bottle", Integer.parseInt(txContent.getText().toString()), Integer.parseInt(txUnits.getText().toString()));
 
-                BeersDatabase db = new BeersDatabase(getBaseContext());
-
                 db.addItem(newItem);
+                db.close();
 
                 Intent intent = new Intent();
                 intent.putExtra("new_item", (Parcelable) newItem);
@@ -78,10 +104,20 @@ public class NewItem extends AppCompatActivity {
                 finish();
 
             } else {
+
                 editing.setName(txName.getText().toString());
                 editing.setBrand(txBrand.getText().toString());
                 editing.setUnits(Integer.parseInt(txUnits.getText().toString()));
                 editing.setContent(Integer.parseInt(txContent.getText().toString()));
+
+                db.updateItem(editing);
+                db.close();
+
+                Intent intent = new Intent();
+                intent.putExtra("new_item", (Parcelable) editing);
+                setResult(RESULT_OK, intent);
+                finish();
+
             }
 
         } else {

@@ -9,6 +9,8 @@ public class Constants {
     public static final String KEEP_LOGGED = "keep_logged";
     public static final String PREFERENCES = "brejas_pref";
 
+    public static final String EDITABLE_ITEM = "edit_breja";
+
     // DATABASE
 
     public static final String DB_NAME = "brejas.db";
