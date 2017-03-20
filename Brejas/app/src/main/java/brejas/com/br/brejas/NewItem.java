@@ -1,5 +1,7 @@
 package brejas.com.br.brejas;
 
+import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.widget.Spinner;
 import java.util.ArrayList;
 import java.util.List;
 
+import brejas.com.br.brejas.database.BeersDatabase;
 import brejas.com.br.brejas.model.Beer;
 
 public class NewItem extends AppCompatActivity {
@@ -64,6 +67,15 @@ public class NewItem extends AppCompatActivity {
 
                 // TODO : type
                 Beer newItem = new Beer(txName.getText().toString(), txBrand.getText().toString(), "Bottle", Integer.parseInt(txContent.getText().toString()), Integer.parseInt(txUnits.getText().toString()));
+
+                BeersDatabase db = new BeersDatabase(getBaseContext());
+
+                db.addItem(newItem);
+
+                Intent intent = new Intent();
+                intent.putExtra("new_item", (Parcelable) newItem);
+                setResult(RESULT_OK, intent);
+                finish();
 
             } else {
                 editing.setName(txName.getText().toString());

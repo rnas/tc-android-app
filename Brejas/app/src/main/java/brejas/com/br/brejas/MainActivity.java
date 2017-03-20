@@ -1,11 +1,10 @@
 package brejas.com.br.brejas;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,9 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import brejas.com.br.brejas.adapter.BeersListAdapter;
+import brejas.com.br.brejas.database.BeersDatabase;
 import brejas.com.br.brejas.helper.Constants;
+import brejas.com.br.brejas.listener.OnClickListener;
 import brejas.com.br.brejas.model.Beer;
-import brejas.com.br.brejas.model.User;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -53,34 +53,50 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setHasFixedSize(true);
+
         loadList();
     }
 
     void loadList() {
 
-        initMock();
+        getFromDatabase();
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-
-        Log.i("BR", String.valueOf(beerArrayList.size()));
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setHasFixedSize(true);
-
-        adapter = new BeersListAdapter(this, beerArrayList);
+        adapter = new BeersListAdapter(this, beerArrayList, onClickListener());
         recyclerView.setAdapter(adapter);
 
     }
 
+    void getFromDatabase() {
+        BeersDatabase db = new BeersDatabase(getApplicationContext());
+        beerArrayList = db.getItems();
+        db.close();
+    }
+
+    private OnClickListener onClickListener () {
+        return new OnClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+
+                Log.i("BR", "clicked");
+                Log.i("BR", String.valueOf(position));
+
+//                Intent i = new Intent(getContext(), DetalheActivity.class);
+//                i.putExtra("carro",  adapter.getItem(position));
+//                startActivity(i);
+
+            }
+        };
+    }
 
     void initMock() {
-
         beerArrayList.add(new Beer("Heineken", "Heineken", "Bottle", 600, 2));
         beerArrayList.add(new Beer("Sol", "Heineken", "Bottle", 600, 10));
         beerArrayList.add(new Beer("Bavária", "Heineken", "Bottle", 1000, 2));
         beerArrayList.add(new Beer("Kaiser", "Heineken", "Pack", 320, 16));
-
     }
 
     @Override
@@ -91,6 +107,18 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadList();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode,int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        loadList();
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import brejas.com.br.brejas.R;
+import brejas.com.br.brejas.listener.OnClickListener;
 import brejas.com.br.brejas.model.Beer;
 
 /**
@@ -21,10 +22,12 @@ public class BeersListAdapter extends RecyclerView.Adapter<BeersListAdapter.Beer
 
     private Context context;
     private List<Beer> beers;
+    private OnClickListener clicklistener;
 
-    public BeersListAdapter(Context context, List<Beer> beers) {
-        this.context    = context;
-        this.beers      = beers;
+    public BeersListAdapter(Context context, List<Beer> beers, OnClickListener clickListener) {
+        this.context        = context;
+        this.beers          = beers;
+        this.clicklistener  = clickListener;
     }
 
     @Override
@@ -42,6 +45,14 @@ public class BeersListAdapter extends RecyclerView.Adapter<BeersListAdapter.Beer
         holder.tvBrand.setText( beers.get(position).getBrand() );
         holder.tvInStock.setText( beers.get(position).getUnits() + " X " + beers.get(position).getType());
 
+        if (clicklistener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    clicklistener.onClick(holder.itemView, position);
+                }
+            });
+        }
     }
 
     public Beer getItem(int position) {

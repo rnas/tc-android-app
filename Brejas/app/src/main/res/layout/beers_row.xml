@@ -28,21 +28,39 @@
                 android:textColor="@android:color/white"
                 android:background="@android:color/holo_green_light"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="BeerName" />
 
             <TextView
                 android:id="@+id/tvBrand"
                 android:padding="10dp"
                 android:gravity="top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="Brand Name" />
 
-            <TextView
-                android:id="@+id/tvInStock"
-                android:padding="10dp"
-                android:gravity="top"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tvInStock"
+                    android:padding="10dp"
+                    android:gravity="top"
+                    android:layout_width="245dp"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity"
+                    android:layout_weight="1" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/ic_delete_black_24dp"
+                    android:id="@+id/btDelete"
+                    android:layout_weight="0.44" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

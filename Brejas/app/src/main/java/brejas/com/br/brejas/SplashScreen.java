@@ -51,7 +51,7 @@ public class SplashScreen extends AppCompatActivity implements Callback<User>, A
     void loadAPIUsers() {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.mocky.io/v2/")
+                .baseUrl("http://www.mocky.io")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         UserAPI api = retrofit.create(UserAPI.class);
