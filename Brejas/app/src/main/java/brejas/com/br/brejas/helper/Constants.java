@@ -10,6 +10,9 @@ public class Constants {
     public static final String PREFERENCES = "brejas_pref";
 
     public static final String EDITABLE_ITEM = "edit_breja";
+    public static final String DELETE_ITEM   = "delete_breja";
+    public static final String OPEN_ITEM     = "open_breja";
+
 
     // DATABASE
 

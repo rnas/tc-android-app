@@ -79,10 +79,25 @@ public class MainActivity extends AppCompatActivity
     private OnClickListener onClickListener () {
         return new OnClickListener() {
             @Override
-            public void onClick(View v, int position) {
-                editItemAt(position);
+            public void onClick(View v, int position, String event) {
+                if (event == Constants.DELETE_ITEM) {
+                    deleteItemAt(position);
+                } else {
+                    editItemAt(position);
+                }
+
             }
         };
+    }
+
+    void deleteItemAt(int position) {
+
+        BeersDatabase db = new BeersDatabase(getApplicationContext());
+        db.deleteItem(beerArrayList.get(position));
+        db.close();
+
+        loadList();
+
     }
 
     void editItemAt(int position) {

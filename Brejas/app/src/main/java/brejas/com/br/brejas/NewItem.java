@@ -48,11 +48,7 @@ public class NewItem extends AppCompatActivity {
 
         if ( getIntent().hasExtra(Constants.EDITABLE_ITEM) ) {
 
-            Log.i("BR", "ipa");
-
             Beer item = getIntent().getParcelableExtra(Constants.EDITABLE_ITEM);
-
-            Log.i("BR", item.getName());
 
             txName.setText(item.getName());
             txBrand.setText(item.getBrand());
@@ -65,7 +61,6 @@ public class NewItem extends AppCompatActivity {
         } else {
             btSubmit.setText(R.string.new_add);
         }
-
 
         initItemsSpinner();
     }

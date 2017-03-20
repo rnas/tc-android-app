@@ -5,12 +5,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
 import brejas.com.br.brejas.R;
+import brejas.com.br.brejas.helper.Constants;
 import brejas.com.br.brejas.listener.OnClickListener;
 import brejas.com.br.brejas.model.Beer;
 
@@ -45,11 +48,18 @@ public class BeersListAdapter extends RecyclerView.Adapter<BeersListAdapter.Beer
         holder.tvBrand.setText( beers.get(position).getBrand() );
         holder.tvInStock.setText( beers.get(position).getUnits() + " X " + beers.get(position).getType());
 
+        holder.btDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               clicklistener.onClick(holder.itemView, position, Constants.DELETE_ITEM);
+            }
+        });
+
         if (clicklistener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    clicklistener.onClick(holder.itemView, position);
+                    clicklistener.onClick(holder.itemView, position, Constants.OPEN_ITEM);
                 }
             });
         }
@@ -69,6 +79,7 @@ public class BeersListAdapter extends RecyclerView.Adapter<BeersListAdapter.Beer
         TextView tvName;
         TextView tvBrand;
         TextView tvInStock;
+        ImageButton btDelete;
 
         public BeersViewHolder(View itemView) {
             super(itemView);
@@ -76,6 +87,7 @@ public class BeersListAdapter extends RecyclerView.Adapter<BeersListAdapter.Beer
             tvName      = (TextView) itemView.findViewById(R.id.tvName);
             tvBrand     = (TextView) itemView.findViewById(R.id.tvBrand);
             tvInStock   = (TextView) itemView.findViewById(R.id.tvInStock);
+            btDelete    = (ImageButton)   itemView.findViewById(R.id.btDelete);
 
         }
     }

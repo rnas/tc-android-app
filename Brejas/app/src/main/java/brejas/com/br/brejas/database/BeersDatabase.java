@@ -101,7 +101,6 @@ public class BeersDatabase extends SQLiteOpenHelper {
         ContentValues fields = new ContentValues();
         String[] args;
 
-//        fields.put(Beer.ID, beer.getId());
         fields.put(Beer.NAME, beer.getName());
         fields.put(Beer.BRAND, beer.getBrand());
         fields.put(Beer.TYPE, beer.getType());
@@ -113,5 +112,18 @@ public class BeersDatabase extends SQLiteOpenHelper {
         getWritableDatabase().update(Constants.DB_BEERS_TABLE, fields, "_id=?", args);
 
     }
+
+    public void deleteItem(Beer beer) {
+
+        ContentValues fields = new ContentValues();
+        String[] args;
+
+        args = new String[] {String.valueOf(beer.getId())};
+
+        getWritableDatabase().delete(Constants.DB_BEERS_TABLE, "_id=?", args);
+
+    }
+
+
 
 }
