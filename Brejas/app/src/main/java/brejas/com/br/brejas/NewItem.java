@@ -132,51 +132,6 @@ public class NewItem extends AppCompatActivity {
 //
 //    }
 
-    void submit(View view) {
-
-        if ( validateDataEntry() ) {
-
-            BeersDatabase db = new BeersDatabase(getBaseContext());
-
-            if (editing == null) {
-
-
-                Beer newItem = new Beer(txName.getText().toString(), txBrand.getText().toString(), Integer.parseInt(txContent.getText().toString()), Integer.parseInt(txUnits.getText().toString()));
-
-                db.addItem(newItem);
-                db.close();
-
-                Intent intent = new Intent();
-                intent.putExtra("new_item", (Parcelable) newItem);
-                setResult(RESULT_OK, intent);
-                finish();
-
-            } else {
-
-                editing.setName(txName.getText().toString());
-                editing.setBrand(txBrand.getText().toString());
-                editing.setUnits(Integer.parseInt(txUnits.getText().toString()));
-                editing.setContent(Integer.parseInt(txContent.getText().toString()));
-
-                db.updateItem(editing);
-                db.close();
-
-                Intent intent = new Intent();
-                intent.putExtra("new_item", (Parcelable) editing);
-                setResult(RESULT_OK, intent);
-                finish();
-
-            }
-
-        } else {
-
-            Toast.makeText(this, formError.toString(), Toast.LENGTH_LONG).show();
-
-            Log.i("BR", "validation error");
-            Log.i("BR", formError);
-        }
-
-    }
 
     Boolean validateDataEntry() {
         if (txName.getText().length() == 0) {
