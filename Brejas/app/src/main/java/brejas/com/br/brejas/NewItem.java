@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,7 +117,9 @@ public class NewItem extends AppCompatActivity {
             }
 
         } else {
-            // TODO : Alert the error
+
+            Toast.makeText(this, formError.toString(), Toast.LENGTH_LONG).show();
+
             Log.i("BR", "validation error");
             Log.i("BR", formError);
         }
